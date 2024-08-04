@@ -1,0 +1,13 @@
+<template>
+  <div>
+    Micro1
+  </div>
+</template>
+
+<script setup>
+
+</script>
+
+<style lang="scss" scoped>
+
+</style>
