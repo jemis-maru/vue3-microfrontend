@@ -6,15 +6,17 @@ export default defineConfig({
   plugins: [
     vue(),
     federation({
-      name: 'host',
-      remotes: {
-        microfrontend1: 'http://localhost:5001/assets/remoteEntry.js',
-        microfrontend2: 'http://localhost:5002/assets/remoteEntry.js',
-        // Add more microfrontends as needed
+      name: 'addtask', // Unique name for the microfrontend
+      filename: 'remoteEntry.js',
+      exposes: {
+        './AddTaskApp': './src/App.vue', // Expose components or modules
       },
-      shared: ['vue'],
+      shared: ['vue'], // Shared dependencies
     }),
   ],
+  preview: {
+    port: 5003, // Port for the host application
+  },
   build: {
     target: 'esnext',
     minify: false,
