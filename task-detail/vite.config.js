@@ -8,6 +8,9 @@ export default defineConfig({
     federation({
       name: 'taskdetail', // Unique name for the microfrontend
       filename: 'remoteEntry.js',
+      remotes: {
+        "task-manager-host": "http://localhost:5000/assets/remoteEntry.js",
+      },
       exposes: {
         './TaskDetailApp': './src/App.vue', // Expose components or modules
       },
