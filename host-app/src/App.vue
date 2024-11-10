@@ -7,12 +7,18 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from "vue";
+
+const isDev = import.meta.env.MODE === "development";
 
 const RemoteComponent = defineAsyncComponent(() =>
-  import('microfrontend1/FirstApp')
+  isDev
+    ? import("http://localhost:5174/src/App.vue")
+    : import("microfrontend1/FirstApp")
 );
 const RemoteComponent2 = defineAsyncComponent(() =>
-  import('microfrontend2/SecondApp')
+  isDev
+    ? import("http://localhost:5175/src/App.vue")
+    : import("microfrontend2/SecondApp")
 );
 </script>

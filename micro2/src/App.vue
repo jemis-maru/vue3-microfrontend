@@ -1,6 +1,6 @@
 <template>
   <div>
-    Micro22
+    Micro2
   </div>
 </template>
 
