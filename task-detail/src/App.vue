@@ -5,11 +5,20 @@
       <label for="task-name" class="label">Task Name</label>
       <div class="input-container">
         <input
-          id="task-name"
           v-model="task.name"
-          class="task-input"
+          id="task-name"
+          class="name-input"
           placeholder="Enter Task Name"
         />
+      </div>
+      <label for="task-desc" class="label">Task Description</label>
+      <div class="input-container">
+        <textarea
+          v-model="task.description"
+          id="task-desc"
+          class="desc-input"
+          rows="4"
+        ></textarea>
       </div>
       <button @click="updateTask" class="save-button">Save Changes</button>
     </form>
@@ -27,6 +36,7 @@ const routerStore = useRouterStore();
 const task = ref({
   id: "",
   name: "",
+  description: "",
 });
 
 const getTask = () => {
@@ -78,7 +88,8 @@ function updateTask() {
   text-align: left;
 }
 
-.task-input {
+.name-input,
+.desc-input {
   width: calc(100% - 31px);
   padding: 12px 15px;
   margin-bottom: 20px;
@@ -89,7 +100,8 @@ function updateTask() {
   transition: border-color 0.3s ease;
 }
 
-.task-input:focus {
+.name-input:focus,
+.desc-input:focus {
   border-color: #007bff;
 }
 

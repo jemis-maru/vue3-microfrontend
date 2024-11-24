@@ -4,10 +4,16 @@
     <form @submit.prevent="addNewTask" class="task-form">
       <input
         v-model="newTask.name"
-        class="task-input"
+        class="name-input"
         placeholder="Task Name"
         required
       />
+      <textarea
+        v-model="newTask.description"
+        class="desc-input"
+        placeholder="Task Description"
+        rows="4"
+      ></textarea>
       <button type="submit" class="submit-button">Add Task</button>
     </form>
   </div>
@@ -21,11 +27,12 @@ import { useRouterStore } from "task-manager-host/routerStore";
 const taskStore = useTaskStore();
 const routerStore = useRouterStore();
 
-const newTask = ref({ name: "" });
+const newTask = ref({ name: "", description: "" });
 
 function addNewTask() {
   taskStore.addTask({
     name: newTask.value.name,
+    description: newTask.value.description,
     id: taskStore.tasks.length + 1,
   });
   newTask.value = { name: "" }; // Reset form
@@ -59,7 +66,8 @@ function addNewTask() {
   align-items: center;
 }
 
-.task-input {
+.name-input,
+.desc-input {
   width: 100%;
   max-width: 400px;
   padding: 12px 15px;
@@ -71,7 +79,8 @@ function addNewTask() {
   transition: border-color 0.3s ease;
 }
 
-.task-input:focus {
+.name-input:focus,
+.desc-input:focus {
   border-color: #007bff;
 }
 
