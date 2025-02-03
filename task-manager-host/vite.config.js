@@ -18,6 +18,7 @@ export default defineConfig({
         "./taskStore": "./src/store/taskStore.js",
         "./routerStore": "./src/store/routerStore.js",
       },
+      // Shared dependencies to avoid duplicate bundles and ensuring version consistency
       shared: ["vue", "pinia", "vue-router"],
     }),
   ],

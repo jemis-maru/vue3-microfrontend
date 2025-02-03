@@ -14,7 +14,8 @@ export default defineConfig({
       exposes: {
         "./TaskListApp": "./src/App.vue", // Expose components or modules
       },
-      shared: ["vue"], // Shared dependencies
+      // Shared dependencies to avoid duplicate bundles and ensuring version consistency
+      shared: ["vue"],
     }),
   ],
   preview: {
